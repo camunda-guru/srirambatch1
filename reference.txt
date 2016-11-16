@@ -17,17 +17,31 @@ $(document).ready(function () {
         {
             //console.log(res);
             jsondata = JSON.parse(res);
+            mytable = $('<table></table>').attr({ id: "CustomerTable" });
+
             $.each(jsondata,function(key,value)
             {
+
+                var row = $('<tr></tr>').appendTo(mytable);
                 $.each(value,function(k1,v1)
                 {
-                    if ((k1 == "StartDate")||(k1=="ExpiryDate"))
+                    if ((k1 == "StartDate") || (k1 == "ExpiryDate")) {
                         console.log(new Date(parseInt(v1.substr(6))));
 
-                    else
-                     console.log(v1);
+                        $('<td></td>').text(new Date(parseInt(v1.substr(6)))).appendTo(row);
+                    }
+                    else {
+                        console.log(v1);
+
+                        $('<td></td>').text(v1).appendTo(row);
+                    }
                 })
+
             })
+
+            mytable.appendTo("section");
+            $("tr:even").css("background-color", "lightblue");
+
 
         },
         failure:function(res)
