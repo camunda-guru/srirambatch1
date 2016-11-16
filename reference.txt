@@ -15,7 +15,20 @@ $(document).ready(function () {
         dataType: 'json',
         success:function(res)
         {
-            console.log(res);
+            //console.log(res);
+            jsondata = JSON.parse(res);
+            $.each(jsondata,function(key,value)
+            {
+                $.each(value,function(k1,v1)
+                {
+                    if ((k1 == "StartDate")||(k1=="ExpiryDate"))
+                        console.log(new Date(parseInt(v1.substr(6))));
+
+                    else
+                     console.log(v1);
+                })
+            })
+
         },
         failure:function(res)
         {
