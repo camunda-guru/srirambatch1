@@ -1,0 +1,27 @@
+-user-data-dir="C:/Chrome dev session" --disable-web-security
+
+
+
+1.install nodejs
+2.goto nodejs command prompt
+3.npm install bower//one time task
+
+4. bower install jquery
+
+$(document).ready(function () {
+    $.ajax({
+        url: "http://localhost:39189/Customers",
+        type: 'GET',
+        dataType: 'json',
+        success:function(res)
+        {
+            console.log(res);
+        },
+        failure:function(res)
+        {
+            console.log(res);
+        }
+    });
+
+
+});
